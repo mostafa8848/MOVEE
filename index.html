@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>🎯 موقعك المفضل | أفلام وأنمي وتعليم مجاني</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- تحسينات SEO -->
+  <meta name="description" content="أفضل موقع عربي لمشاهدة الأفلام والأنمي والكورسات المجانية. روابط مباشرة بدون إعلانات.">
+  <meta name="keywords" content="مشاهدة أفلام, أفلام عربية, أفلام أجنبية, تحميل أفلام, أنمي مترجم, مواقع أنمي, تعليم أونلاين, كورسات مجانية, تعلم البرمجة, تعلم الإنجليزية, موقع مصطفى, موقعك المفضل">
+  <meta name="author" content="Mustafa">
+  <meta name="robots" content="index, follow">
+
+  <!-- تصميم CSS -->
+  <style>
+    :root {
+      --bg-color: radial-gradient(circle at center, #4a0000, #2b0000, #000000);
+      --text-color: #ffffff;
+      --card-bg: rgba(255,255,255,0.07);
+      --link-color: #ff3333;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 15px var(--link-color);
+      position: relative;
+    }
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      color: var(--link-color);
+      text-shadow: 0 0 10px var(--link-color);
+    }
+    .toggle-mode {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--link-color);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .section {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 30px 15px;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card h2 {
+      font-size: 22px;
+      color: var(--link-color);
+      margin-bottom: 15px;
+    }
+    .card button {
+      background-color: var(--link-color);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .card button:hover {
+      background-color: #aa0000;
+    }
+    .links {
+      display: none;
+      padding: 25px 15px;
+    }
+    .links h3 {
+      text-align: center;
+      font-size: 26px;
+      color: #ffe066;
+      margin-bottom: 20px;
+    }
+    .link-item {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px auto;
+      text-align: center;
+      width: 90%;
+    }
+    .link-item a {
+      color: var(--link-color);
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .link-item a:hover {
+      color: #ffe066;
+      text-shadow: 0 0 5px var(--link-color);
+    }
+    .link-item p {
+      font-size: 13px;
+      color: #ccc;
+      margin: 0;
+    }
+    .back-btn {
+      background-color: var(--link-color);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto;
+    }
+    .back-btn:hover {
+      background-color: #cc0000;
+    }
+    .hidden { display: none; }
+    @media (max-width: 600px) {
+      .card { width: 90%; }
+      header h1 { font-size: 26px; }
+      .toggle-mode { font-size: 12px; padding: 5px 10px; }
+    }
+  </style>
+
+  <!-- JavaScript -->
+  <script>
+    function showSection(sectionId) {
+      document.querySelector('header').classList.add('hidden');
+      document.querySelector('.section').classList.add('hidden');
+      document.getElementById(sectionId).style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function goBack() {
+      document.querySelector('header').classList.remove('hidden');
+      document.querySelector('.section').classList.remove('hidden');
+      document.querySelectorAll('.links').forEach(el => el.style.display = 'none');
+    }
+    let modeIndex = 0;
+    const modes = [
+      { bg: 'radial-gradient(circle at center, #4a0000, #2b0000, #000000)', text: '#ffffff', card: 'rgba(255,255,255,0.07)', link: '#ff3333' },
+      { bg: 'radial-gradient(circle at center, #ffffff, #ffcccc, #ffe6e6)', text: '#000000', card: '#f3f3f3', link: '#b30000' },
+      { bg: 'radial-gradient(circle at center, #000000, #001133, #003366)', text: '#ffffff', card: 'rgba(255,255,255,0.08)', link: '#3399ff' },
+      { bg: 'radial-gradient(circle at center, #0099cc, #66ccff, #ffffff)', text: '#000000', card: '#ffffff', link: '#005577' }
+    ];
+    function toggleMode() {
+      modeIndex = (modeIndex + 1) % modes.length;
+      const root = document.documentElement;
+      const mode = modes[modeIndex];
+      root.style.setProperty('--bg-color', mode.bg);
+      root.style.setProperty('--text-color', mode.text);
+      root.style.setProperty('--card-bg', mode.card);
+      root.style.setProperty('--link-color', mode.link);
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>🌟 موقعك المفضل</h1>
+    <button class="toggle-mode" onclick="toggleMode()">🌓 تبديل الوضع</button>
+  </header>
+
+  <div class="section">
+    <div class="card"><h2>🎬 أفلام</h2><button onclick="showSection('movies')">دخول</button></div>
+    <div class="card"><h2>📺 أنمي</h2><button onclick="showSection('anime')">دخول</button></div>
+    <div class="card"><h2>📚 تعليم</h2><button onclick="showSection('education')">دخول</button></div>
+  </div>
+
+  <div id="movies" class="links">
+    <h3>🎬 مواقع لمشاهدة الأفلام</h3>
+  
+    <div class="link-item">
+      <a href="https://tv1.egydead.live/" target="_blank">موقع ايجي ديد</a>
+      <p>أفلام عربية وعالمية بجودة عالية</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://wecima.video/" target="_blank">موقع وي سيما</a>
+      <p>منصة قوية للأفلام والمسلسلات الجديدة</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://web6.topcinema.cam/home7/" target="_blank">موقع توب سيما</a>
+      <p>أفلام حديثة مباشرة بدون تحميل</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://aflaam.com/movies" target="_blank">موقع أفلام</a>
+      <p>أفضل تصنيفات الأفلام واختيارات الجمهور</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://egydead.ca/" target="_blank">EGY DEAD الجديد</a>
+      <p>مشاهدة مباشرة + واجهة سهلة وسريعة</p>
+    </div>
+  
+    <button class="back-btn" onclick="goBack()">🔙 رجوع</button>
+  </div>
+  
+  <div id="anime" class="links">
+    <h3>📺 مواقع لمشاهدة الأنمي والكرتون</h3>
+  
+    <div class="link-item">
+      <a href="https://witanime.world/" target="_blank">موقع WIT ANIME</a>
+      <p>أنمي مترجم بجودة عالية وتصنيفات متنوعة</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://vip.animerco.org/" target="_blank">موقع Animerco</a>
+      <p>واجهة سهلة واختيار الحلقات بضغطة زر</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://anime3rb.com/" target="_blank">موقع انمي العرب</a>
+      <p>أنميات جديدة ومترجمة للعربية باستمرار</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://4e.v3c9a.shop/" target="_blank">موقع Anime 4Up</a>
+      <p>مشاهدة وتحميل الأنمي بروابط مباشرة</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://animezid.cam/" target="_blank">موقع انمي زد</a>
+      <p>أنميات موسمية وتصنيفات رائعة لمحبي الياباني</p>
+    </div>
+  
+    <button class="back-btn" onclick="goBack()">🔙 رجوع</button>
+  </div>
+
+  <div id="education" class="links">
+    <h3>📘 مواقع تعليمية مجانية</h3>
+  
+    <div class="link-item">
+      <a href="https://www.khanacademy.org/" target="_blank">Khan Academy</a>
+      <p>تعلم الرياضيات، البرمجة، العلوم وغيرها مجاناً</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://www.coursera.org/" target="_blank">Coursera</a>
+      <p>كورسات مجانية من جامعات عالمية باللغة الإنجليزية</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://www.edx.org/" target="_blank">edX</a>
+      <p>تعليم أكاديمي مجاني من MIT و Harvard وشركات تقنية مشهورة</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://alison.com/" target="_blank">Alison</a>
+      <p>دورات وشهادات مجانية في مجالات كثيرة مثل إدارة الأعمال واللغات</p>
+    </div>
+  
+    <div class="link-item">
+      <a href="https://www.openculture.com/" target="_blank">Open Culture</a>
+      <p>كتب، صوتيات، أفلام ومحاضرات مرئية مجانية للتثقيف الذاتي</p>
+    </div>
+  
+    <button class="back-btn" onclick="goBack()">🔙 رجوع</button>
+  </div>
+    <!-- نهاية الأقسام -->
+</body>
+</html>
